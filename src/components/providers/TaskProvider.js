@@ -10,13 +10,13 @@ export const TaskProvider = (props) => {
 
 
     const getTasks = () => {
-        return fetch("http://localhost:8088/tasks")
+        return fetch("https://projecttrackerdpb-db.herokuapp.com/tasks")
             .then(res => res.json())
             .then(setTasks)
     }
 
     const addTask = task => {
-        return fetch("http://localhost:8088/tasks", {
+        return fetch("https://projecttrackerdpb-db.herokuapp.com/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -26,14 +26,14 @@ export const TaskProvider = (props) => {
     }
 
     const deleteTask = taskId => {
-        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+        return fetch(`https://projecttrackerdpb-db.herokuapp.com/tasks/${taskId}`, {
             method: "DELETE"
         })
             .then(getTasks)
     }
 
     const updateTask = task => {
-        return fetch(`http://localhost:8088/tasks/${task.id}`, {
+        return fetch(`https://projecttrackerdpb-db.herokuapp.com/tasks/${task.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

@@ -9,13 +9,13 @@ export const ProjectProvider = (props) => {
     const [projects, setProjects] = useState([])
 
     const getProjects = () => {
-        return fetch("http://localhost:8088/projects")
+        return fetch("https://projecttrackerdpb-db.herokuapp.com/projects")
             .then(res => res.json())
             .then(setProjects)
     }
 
     const addProject = project => {
-        return fetch("http://localhost:8088/projects", {
+        return fetch("https://projecttrackerdpb-db.herokuapp.com/projects", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,14 +29,14 @@ export const ProjectProvider = (props) => {
     }
 
     const deleteProject = projectId => {
-        return fetch(`http://localhost:8088/projects/${projectId}`, {
+        return fetch(`https://projecttrackerdpb-db.herokuapp.com/projects/${projectId}`, {
             method: "DELETE"
         })
             .then(getProjects)
     }
 
     const updateProject = project => {
-        return fetch(`http://localhost:8088/projects/${project.id}`, {
+        return fetch(`https://projecttrackerdpb-db.herokuapp.com/projects/${project.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
